@@ -114,5 +114,6 @@ li {
 }
 
 .wrong{
-    background-color:#cc0000
+    background-color:#cc0000;
+    margin-top:1em;
 }
