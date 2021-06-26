@@ -60,6 +60,7 @@ function startGame(){
     questionEl.style.display = "block";
     optionsEl.style.display = "flex";
     scoreFormEl.style.display = "none"
+    scoreFormEl.firstElementChild.innerHTML = 'Your final score is <span id = "score"></span>'
     highScoreEl.style.display = "none"
     highScoreH.innerHTML = "High Scores:"
     buildQuestions()
@@ -88,13 +89,14 @@ function buildQuestions(){
         optionsEl.appendChild(optionAdd)
     }
 }
+
+// Shows the answer of the previous question for 2.5 seconds
 function showAnswer(x){
-    commentEl.className = 'visible'
     commentEl.textContent = x+commentObj;
     // hide answer after 1.5 seconds
     setTimeout(function(){
         document.getElementById('comment').className = 'hidden';
-    }, 1500);
+    }, 2500);
 }
 
 // pulls high score data from local storage
@@ -142,34 +144,58 @@ scoreButtonEl.addEventListener("click",function (event){
     event.preventDefault()
     let element = event.target;
     let nameInitials = nameInput.value;
-    let scoreObj = {
-        yourName:nameInitials,
-        yourScore:score
+    // do not store details if no name is entered
+    if (nameInitials==""){
+        commentEl.className = 'visible wrong';
+        function showWarning() {
+            commentEl.textContent = "Please enter a name before submitting"
+            // hide answer after 1.5 seconds
+            setTimeout(function(){
+                document.getElementById('comment').className = 'hidden';
+            }, 1500);
+        }
+        showWarning();
+        }
+    
+    else {
+        let scoreObj = {
+            yourName:nameInitials,
+            yourScore:score
+        }
+        highScore.push(scoreObj)
+        nameInput.value = ""
+        //storage in local storage 
+        localStorage.setItem('highScore', JSON.stringify(highScore))
+        console.log(highScore)
+        // hide form to then show the highscores
+        scoreFormEl.style.display = "none";
+        buildHighScore();
     }
-    highScore.push(scoreObj)
-    nameInput.value = ""
-    //storage in local storage 
-    localStorage.setItem('highScore', JSON.stringify(highScore))
-    console.log(highScore)
-    // hide form to then show the highscores
-    scoreFormEl.style.display = "none";
-    buildHighScore();
 });
 
-//Checks if the answer is correct
+//Shows final score of the quiz
+function showFinalScore(){
+    scoreFormEl.style.display = "block";
+    optionsEl.style.display = "none";
+    questionEl.style.display = "none";
+    scoreEl.textContent = score;
+}
+
+//Checks if the answer is correct, shows comment, adds a correct/wrong class to comment
 optionsEl.addEventListener("click",function (event){
     let element = event.target;
     if (element.matches(".option")){
         let check = element.getAttribute("data-answer");
         if(check === "correct"){
+            commentEl.className = 'visible correct'
             showAnswer("CORRECT! ")
         }
         else {
             secondsLeft-=10
+            commentEl.className = 'visible wrong'
             showAnswer("WRONG! ")
         }
     }
-
     optionsEl.innerHTML = "";
     questionEl.textContent = "";
     questionIndex++;
@@ -178,24 +204,27 @@ optionsEl.addEventListener("click",function (event){
     buildQuestions();
     }
     else {
-        if (secondsLeft >=0){
+        if (secondsLeft >0){
             score = secondsLeft 
+            timeEl.textContent = score;
+            clearInterval(timerInterval);
+            showFinalScore();
         }
+        // if score <= 0, then game over message is prompted
         else {
             score = 0
+            timeEl.textContent = score;
+            clearInterval(timerInterval);
+            gameOver();
         }
-        timeEl.textContent = score;
-        clearInterval(timerInterval);
-        scoreFormEl.style.display = "block";
-        optionsEl.style.display = "none";
-        questionEl.style.display = "none";
-        scoreEl.textContent = score;
     }
 });
 
+// Ends the game and displays a game over message
 function gameOver() {
-    highScoreH.innerHTML = "GAME OVER. Here are the high scores:"
-    buildHighScore();
+    scoreFormEl.firstElementChild.innerHTML = "GAME OVER. You scored 0."
+    score = 0;
+    showFinalScore();
 }
 
 function timerStart() {

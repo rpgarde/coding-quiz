@@ -29,8 +29,8 @@ Here's a link to the [deployed page](https://rpgarde.github.io/coding-quiz/)
 * WHEN all questions are answered or the timer reaches 0
 * THEN the game is over
     * Done. I made two different options
-        * If they finished with a score above 0 they can save their initials
-        * If they finished with a score of 0, it shows a game over message and goes straight to high scores
+        * If score is above 0, it shows a standard response
+        * If score is 0, it shows a GAME OVER response.
 * WHEN the game is over
 * THEN I can save my initials and my score
-    * Done, see above
+    * Done, initials and score are saved in local storage

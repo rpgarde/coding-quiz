@@ -9,15 +9,28 @@ body {
     color: white;
 }
 
+h1 {
+    text-align:center;
+}
+
+p {
+    text-align:left;
+}
+
 #heading {
     display:flex;
     justify-content: space-between;
-    margin:1em;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:1em;
+    margin-bottom:1em;
 }
 
 #heading div {
-    background-color:#E5E5E5;
-    color:#14213d;
+    background-color:#14213d;
+    color:#ffffff;
+    border: 2px solid white;
     padding:0.5em;
     border-radius:0.5em;
     font-size:80%;
@@ -44,7 +57,7 @@ body {
     flex-direction:column;
     align-items: center;
     justify-content:center;
-    padding:5em;
+    padding:5%;
     width: 70%;
 }
 
@@ -93,4 +106,13 @@ li {
 
 .hidden{
     display:none;
+}
+
+.correct{
+    background-color: #39C16C;
+    margin-top:1em;
+}
+
+.wrong{
+    background-color:#cc0000
 }
