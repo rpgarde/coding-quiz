@@ -1,0 +1,96 @@
+/* https://coolors.co/000000-14213d-fca311-e5e5e5-ffffff */
+
+*{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    background-color:#000000;
+    color: white;
+}
+
+#heading {
+    display:flex;
+    justify-content: space-between;
+    margin:1em;
+}
+
+#heading div {
+    background-color:#E5E5E5;
+    color:#14213d;
+    padding:0.5em;
+    border-radius:0.5em;
+    font-size:80%;
+}
+
+#timer {
+    font-size:150%;
+    font-weight:700;
+    color:#fca311;
+}
+
+#options{
+    display:flex;
+    flex-direction: column;
+}
+
+#playfield {
+    border-radius:1em;
+    margin-left:auto;
+    margin-right:auto;
+    border: 2px solid #ffffff;
+    background-color: #14213d;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content:center;
+    padding:5em;
+    width: 70%;
+}
+
+#question {
+    color:#ffffff;
+    text-align:center;
+    padding:10px;
+}
+
+.btn {
+    padding:0.5em;
+    border-radius:0.5em;
+    background-color: #E5E5E5;
+}
+
+.btn:hover {
+    background-color:#fca311;
+    color:#14213d;
+}
+
+#final-score{
+    display:none;
+}
+
+#high-score{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+li {
+    padding:0.25em;
+}
+
+#btn-container{
+    text-align: center;
+}
+
+#restart{
+    width:50%;
+}
+
+.visible{
+    display:block;
+}
+
+.hidden{
+    display:none;
+}
