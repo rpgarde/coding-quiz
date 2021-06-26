@@ -101,17 +101,17 @@ function showAnswer(x){
 
 // pulls high score data from local storage
 function pullHighScore(){
-    if (highScore == null){
-        return
-    }
-    else {
         highScore = JSON.parse(localStorage.getItem('highScore'))
+        if(highScore===null){
+            highScore = []
+        }
+        else {
         //sorts highScore from highest to lowest
-        highScore.sort(function(a,b){
-            return b.yourScore - a.yourScore  
-        })
+            highScore.sort(function(a,b){
+                return b.yourScore - a.yourScore  
+            })
+        }
     }
-}
 
 // Build the high score page with local storage
 function buildHighScore(){
@@ -161,7 +161,6 @@ scoreButtonEl.addEventListener("click",function (event){
         }
         showWarning();
         }
-    
     else {
         let scoreObj = {
             yourName:nameInitials,
