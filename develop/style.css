@@ -1,12 +1,12 @@
-/* https://coolors.co/000000-14213d-fca311-e5e5e5-ffffff */
+/* https://coolors.co/0d1b2a-1b263b-415a77-778da9-e0e1dd*/
 
 *{
     font-family: 'Noto Sans JP', sans-serif;
 }
 
 body {
-    background-color:#000000;
-    color: white;
+    background-color:#0D1B2A;
+    color: #E0E1DD;
 }
 
 h1 {
@@ -15,6 +15,10 @@ h1 {
 
 p {
     text-align:left;
+}
+
+#playfield {
+    text-align:center;
 }
 
 #heading {
@@ -28,9 +32,9 @@ p {
 }
 
 #heading div {
-    background-color:#14213d;
-    color:#ffffff;
-    border: 2px solid white;
+    background-color:#1B263B;
+    color:#E0E1DD;
+    border: 2px solid #E0E1DD;
     padding:0.5em;
     border-radius:0.5em;
     font-size:80%;
@@ -39,7 +43,7 @@ p {
 #timer {
     font-size:150%;
     font-weight:700;
-    color:#fca311;
+    color:#778DA9;
 }
 
 #options{
@@ -51,9 +55,8 @@ p {
     border-radius:1em;
     margin-left:auto;
     margin-right:auto;
-    border: 2px solid #ffffff;
-    background-color: #14213d;
-    display:flex;
+    border: 2px solid #E0E1DD;
+    background-color: #1B263B;
     flex-direction:column;
     align-items: center;
     justify-content:center;
@@ -70,12 +73,12 @@ p {
 .btn {
     padding:0.5em;
     border-radius:0.5em;
-    background-color: #E5E5E5;
+    background-color: #E0E1DD;
 }
 
 .btn:hover {
-    background-color:#fca311;
-    color:#14213d;
+    background-color:#415A77;
+    color:#E0E1DD;
 }
 
 #final-score{
