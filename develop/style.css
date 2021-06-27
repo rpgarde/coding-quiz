@@ -19,12 +19,14 @@ p {
 
 #playfield {
     text-align:center;
+    max-width:800px;
 }
 
 #heading {
     display:flex;
     justify-content: space-between;
     width:80%;
+    max-width:963px;
     margin-left:auto;
     margin-right:auto;
     margin-top:1em;
@@ -49,6 +51,9 @@ p {
 #options{
     display:flex;
     flex-direction: column;
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #playfield {
@@ -89,10 +94,14 @@ p {
     display:flex;
     flex-direction:column;
     justify-content:center;
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 li {
     padding:0.25em;
+    text-align:left;
 }
 
 #btn-container{

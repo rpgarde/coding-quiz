@@ -1,4 +1,3 @@
-// create the questions in objects
 let timeEl = document.getElementById('timer')
 let startBtn = document.getElementById('start')
 let restartBtn = document.getElementById('restart')
@@ -7,9 +6,9 @@ let optionsEl = document.getElementById('options')
 let questionIndex = 0
 let secondsLeft = ""
 let score = ""
+let scoreEl = document.getElementById('score')
 let timerInterval
 let scoreFormEl = document.getElementById('final-score')
-let scoreEl = document.getElementById('score')
 let commentEl = document.getElementById('comment')
 let scoreButtonEl = document.getElementById('save-score')
 let nameInput = document.getElementById('nameinput')
@@ -60,7 +59,9 @@ function startGame(){
     questionEl.style.display = "block";
     optionsEl.style.display = "flex";
     scoreFormEl.style.display = "none"
+    //rebuilds scoreEl as we change the element in the gameOver() function
     scoreFormEl.firstElementChild.innerHTML = 'Your final score is <span id = "score"></span>'
+    scoreEl = document.getElementById('score')
     highScoreEl.style.display = "none"
     highScoreH.innerHTML = "High Scores:"
     buildQuestions()
@@ -128,9 +129,6 @@ for (var i = 0; i < highScore.length; i++) {
     var scoreLi = highScore[i];
     var li = document.createElement("li");
     li.textContent = scoreLi.yourName+" got a score of "+scoreLi.yourScore;
-    console.log(scoreLi);
-    // var button = document.createElement("button");
-    // button.textContent = "Complete ✔️";
     highScoreListEl.appendChild(li);
   }
 }
@@ -170,7 +168,6 @@ scoreButtonEl.addEventListener("click",function (event){
         nameInput.value = ""
         //storage in local storage 
         localStorage.setItem('highScore', JSON.stringify(highScore))
-        console.log(highScore)
         // hide form to then show the highscores
         scoreFormEl.style.display = "none";
         buildHighScore();
@@ -179,10 +176,10 @@ scoreButtonEl.addEventListener("click",function (event){
 
 //Shows final score of the quiz
 function showFinalScore(){
+    scoreEl.innerHTML = score;
     scoreFormEl.style.display = "block";
     optionsEl.style.display = "none";
     questionEl.style.display = "none";
-    scoreEl.textContent = score;
 }
 
 //Checks if the answer is correct, shows comment, adds a correct/wrong class to comment
@@ -212,6 +209,7 @@ optionsEl.addEventListener("click",function (event){
             score = secondsLeft 
             timeEl.textContent = score;
             clearInterval(timerInterval);
+            scoreEl.innerHTML = score;
             showFinalScore();
         }
         // if score <= 0, then game over message is prompted
@@ -224,7 +222,7 @@ optionsEl.addEventListener("click",function (event){
     }
 });
 
-// Ends the game and displays a game over message
+// Ends the game and displays a game over message if you get a score of 0
 function gameOver() {
     scoreFormEl.firstElementChild.innerHTML = "GAME OVER. You scored 0."
     score = 0;
@@ -249,9 +247,11 @@ function timerStart() {
   }, 1000);
 }
 
+// Start and Restart buttons start the same functions
 startBtn.addEventListener('click',timerStart)
 restartBtn.addEventListener('click',timerStart)
 
+// Runs when the page is loaded
 function init(){
     pullHighScore();
     questionEl.style.display = "block";
