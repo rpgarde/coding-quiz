@@ -25,7 +25,7 @@ let quizQuestions = [{
     correctAnswer:0,
     comment:"The correct answer is preventDefault()"
 }, {
-    question: "Inside what HTML do we put javascript?",
+    question: "Inside what HTML element do we put javascript?",
     options:["<java>","<javascript>","<script>","<js>"],
     correctAnswer:2,
     comment:"The correct answer is <script>"
