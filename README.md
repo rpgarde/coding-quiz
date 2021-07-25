@@ -34,3 +34,14 @@ Here's a link to the [deployed page](https://rpgarde.github.io/coding-quiz/)
 * WHEN the game is over
 * THEN I can save my initials and my score
     * Done, initials and score are saved in local storage
+
+## Images
+
+First thing you see is a start game button with instructions
+![Screenshot](./images/intro-pic.png)
+
+As you navigate through the test, the timer starts. Every wrong answer deducts points off the timer. 
+![Screenshot](./images/ongoing-test.png)
+
+Once you're done, you can save your high scores and access it at any time.
+![Screenshot](./images/high-score.png)
