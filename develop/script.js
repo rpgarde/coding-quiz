@@ -103,7 +103,7 @@ function showAnswer(x){
 // pulls high score data from local storage
 function pullHighScore(){
         highScore = JSON.parse(localStorage.getItem('highScore'))
-        if(highScore===null){
+        if(!highScore){
             highScore = []
         }
         else {
